@@ -1,0 +1,40 @@
+{%extends "base.html "%} {% block title %}Submit a horse name{% endblock %} 
+
+{% block content %}
+{# Obtain a list of messages if flashes were generated. #}
+{% with messages = get_flashed_messages() %}
+  {% if messages %} {# If messages exist... #}
+    <ul class=flashes>
+    {% for message in messages %} {# Simply post them all the same way. #}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message}}
+        <button
+                type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+
+<div align="center">
+    <form method = "POST">
+        <h3>
+            <label for="horse_Name">  Enter a Horse Name:    </label>
+        </h3>
+
+    <input type="text" name="horse_Name" id="horse_Name"/>
+    <br> <br> <br> <br>    
+    <label for="horse_Gender">Select Horse Gender:</label>
+    <select id="horse_Gender" name="horse_Gender">
+        <option value="Stallion">Stallion</option>
+        <option value="Mare"> Mare </option>
+        <option value="Gelding"> Gelding </option>
+        <option value="Colt"> Colt </option>
+        <option value="Filly"> Filly </option>
+
+    </select>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+</div>
+
+{% endblock %}

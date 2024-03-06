@@ -1,0 +1,21 @@
+{%extends "base.html "%} {% block title %}User Lookup{% endblock %} 
+
+{% block content %}
+<form method="POST">
+    <div class="form-group">
+      <label for="user_id">User Id number.</label>
+      <input
+        type="text"
+        id="user_id"
+        name="user_id"
+        class="form-control"
+        placeholder="Enter A Number"
+      />
+  
+      <br />
+      <div align="center">
+        <button class="btn btn-primary" type="submit">Sign Up</button>
+      </div>
+    </div>
+  </form>
+{% endblock %}

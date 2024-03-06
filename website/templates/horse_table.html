@@ -1,0 +1,24 @@
+{%extends "base.html "%} {% block title %}Horse Table Lookup{% endblock %} 
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col"><h2><u>Horse</u></h2></th>
+      <th scope="col"><h2><u>Gender</u></h2></th>
+      <th scope="col"> <h2><u>Age</u></h2></th>
+    </tr>
+  </thead>
+
+  <tbody>   
+    {% for horse in horses %}
+    <tr>
+        <th scope="row">{{ horse.name }}</th>
+        <td> {{ horse.gender }} </td>
+        <td> {{ horse.timestamp }} </td>
+      </tr>  
+    {% endfor %}  
+  </tbody>
+</table>
+
+{% endblock %}
