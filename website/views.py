@@ -89,3 +89,15 @@ def horse_table():
 
     return render_template("horse_table.html", horses = horses )
 
+@views.route("/claim_horse/<horse_name>", methods=["POST", "GET"])
+
+def claim_horse(horse_name):
+    from website import db
+    from .models import Horse
+    db.connect()
+
+    # Use .get() instead of .select().where() if you expect only one result
+    db_horse = Horse.get(Horse.name == horse_name)
+
+    # Access the 'name' attribute of the retrieved Horse object
+    return f"Hi!, {db_horse.name}"
