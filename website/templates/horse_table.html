@@ -19,8 +19,9 @@
         <td> {{ horse.timestamp }} </td>
         <td>
           <!-- Add a Bootstrap button (btn class) with a link or any action you want -->
-          <button type="button" class="btn btn-primary">Claim</button>
-      </td>
+          <a href="{{ url_for('views.claim_horse', horse_name=horse.name) }}" class="btn btn-primary" method="POST">Action</a>
+
+        </td>
       </tr>  
     {% endfor %}  
   </tbody>
