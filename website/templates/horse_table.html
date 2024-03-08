@@ -1,12 +1,13 @@
 {%extends "base.html "%} {% block title %}Horse Table Lookup{% endblock %} 
 
 {% block content %}
+<h2 align="center"> <u>Available horses<u> </h2>
 <table class="table table-striped">
     <thead>
     <tr>
       <th scope="col"><h2><u>Horse</u></h2></th>
       <th scope="col"><h2><u>Gender</u></h2></th>
-      <th scope="col"> <h2><u>Age</u></h2></th>
+      <th scope="col"> <h2><u>Time Created</u></h2></th>
     </tr>
   </thead>
 
@@ -16,6 +17,10 @@
         <th scope="row">{{ horse.name }}</th>
         <td> {{ horse.gender }} </td>
         <td> {{ horse.timestamp }} </td>
+        <td>
+          <!-- Add a Bootstrap button (btn class) with a link or any action you want -->
+          <button type="button" class="btn btn-primary">Claim</button>
+      </td>
       </tr>  
     {% endfor %}  
   </tbody>

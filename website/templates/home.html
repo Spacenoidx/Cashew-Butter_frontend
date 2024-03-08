@@ -2,6 +2,13 @@
 
 {% block content %}
 <br />
+
+{% with messages = get_flashed_messages() %}
+{% for message in messages %}
+{{  message  }}
+{% endfor %}
+{% endwith %}
+
 <h1 align="center"><u>Cashew Butter</u> 🏇🏾 </h1>
 
 <h4 align="center"> A Horse Racing Ownership Simulation Experience.</h4>

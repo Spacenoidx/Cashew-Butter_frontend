@@ -1,7 +1,15 @@
-{%extends "base.html "%} {% block title %}User Lookup{% endblock %} 
+{%extends "base.html "%} 
+
+{% block title %} User Lookup {% endblock %} 
 
 {% block content %}
 
-<h3> Email:</h3>
-{{ user.email }}
+    <h6> Email: </h6>
+    <p> {{ user.email }} </p>
+
+    <h6> Cash on Hand: </h6>
+    {{ user.cash_on_hand }}
+
+    <h6>  </h6>
+
 {% endblock %}
