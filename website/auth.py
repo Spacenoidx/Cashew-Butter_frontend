@@ -20,6 +20,30 @@ auth = Blueprint('auth', __name__)
 
 
 
+# Either allow user to log in via a POST method, or present the login page.
+
+@auth.route("/login", methods=["POST", "GET"])
+def login():
+    if request.method == 'POST':
+        email = request.form.get("email")
+        password = request.form.get("password")
+
+        user = User.get(User.email == email)
+        
+        if user:
+
+            # Compare hashed password. If it's a match, log the user in and return them to the home page.
+            if check_password_hash(user.password, password):
+                flash("Logged in!", category="success")
+                login_user(user, remember=True)
+                return redirect(url_for("views.home"))
+            else:
+                flash("Password is incorrect.", category="error")
+        else:
+            flash("Email does not exist.", category="error")
+
+    return render_template("login.html", user=current_user)
+
 #Create a new user with this route.
 @auth.route("/sign_up", methods=["POST", "GET"])
 def sign_up():
@@ -92,3 +116,9 @@ def sign_up():
 
     return render_template("register_page.html", user=current_user)
 
+#Simple logout and return to home.
+@auth.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("views.home"))

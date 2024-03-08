@@ -2,12 +2,14 @@ from os import name
 from flask import (
     Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
+from flask_login import login_required, current_user
 
 # Naming our main blueprint "views".
 
 views = Blueprint ('views', __name__)
 
 @views.route("/", methods=["POST", "GET"])
+@login_required
 def home():
     if request.method == "POST":
 
@@ -26,7 +28,7 @@ def home():
 
         
     else:
-        return render_template("home.html")   
+        return render_template("home.html", user = current_user)   
 
 @views.route("/user_search", methods=["POST", "GET"])
 def user_lookup_page():
