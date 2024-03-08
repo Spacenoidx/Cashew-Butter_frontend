@@ -16,7 +16,7 @@ def home():
         from website import db
         from .models import User
         db.connect()
-        db.create_tables(User)
+        User.create_table()
         
     
         User.create(email=email)
